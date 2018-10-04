@@ -1,15 +1,28 @@
-import * as usbDetect from 'usb-detection';
+import { autoinject } from 'aurelia-framework';
+import { Store } from 'aurelia-store';
+import { Subscription } from 'rxjs';
+import { IState } from './state';
 
+@autoinject
 export class App {
-  public devices: usbDetect.Device[] = [];
+  public state?: IState;
+  private subscription?: Subscription;
 
-  public async attached() {
-    this.devices = await usbDetect.find();
+  constructor(private store: Store<IState>) {}
 
-    usbDetect.on('change', async device => {
-      this.devices = await usbDetect.find();
+  public bind() {
+    this.subscription = this.store.state.subscribe(state => {
+      this.state = state;
     });
+  }
 
-    usbDetect.startMonitoring();
+  public unbind() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  public refresh() {
+    this.store.dispatch('refresh-devices');
   }
 }

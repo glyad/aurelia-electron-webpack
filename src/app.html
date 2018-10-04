@@ -1,7 +1,7 @@
 <template>
     <h1>Connected USB Devices</h1>
     <ul>
-        <li repeat.for="device of devices">
+        <li repeat.for="device of state.devices">
             <!-- ${device.vendorId}
             ${device.productId} -->
             ${device.manufacturer}
@@ -9,4 +9,6 @@
             ${device.serialNumber}
         </li>
     </ul>
+
+    <button click.delegate="refresh()">Refresh Devices</button>
 </template>
