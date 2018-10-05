@@ -1,5 +1,5 @@
 import { PLATFORM } from 'aurelia-pal';
-import { CallingAction, MiddlewarePlacement, Reducer, Store, StoreOptions } from 'aurelia-store';
+import { CallingAction, MiddlewarePlacement, Store, StoreOptions } from 'aurelia-store';
 import { ipcMain, ipcRenderer, webContents } from 'electron';
 
 PLATFORM.performance = {

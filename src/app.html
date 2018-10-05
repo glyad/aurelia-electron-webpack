@@ -1,5 +1,6 @@
 <template>
     <h1>Connected USB Devices</h1>
+    <button click.delegate="refresh()">Refresh Devices</button>
     <ul>
         <li repeat.for="device of state.devices">
             <!-- ${device.vendorId}
@@ -9,6 +10,4 @@
             ${device.serialNumber}
         </li>
     </ul>
-
-    <button click.delegate="refresh()">Refresh Devices</button>
 </template>

@@ -18,5 +18,6 @@ bootstrap(async (aurelia: Aurelia) => {
   const store = new ElectronStore<IState>({ devices: [] });
   aurelia.container.registerInstance(Store, store);
 
-  return aurelia.start().then(() => aurelia.setRoot(App, document.body));
+  await aurelia.start();
+  return aurelia.setRoot(App, document.body);
 });

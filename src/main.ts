@@ -1,14 +1,17 @@
 import 'reflect-metadata';
 
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import * as usbDetect from 'usb-detection';
 import { deepClone, ElectronStore } from './electron-store';
+import environment from './environment';
 import { IState } from './state';
 
 let mainWindow: Electron.BrowserWindow | undefined;
 
 function createWindow() {
-  // Menu.setApplicationMenu(null);
+  if (!environment.debug) {
+    Menu.setApplicationMenu(null);
+  }
   mainWindow = new BrowserWindow({ width: 800, height: 600 });
   mainWindow.loadFile('index.html');
   // mainWindow.webContents.openDevTools()

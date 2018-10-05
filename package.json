@@ -29,6 +29,7 @@
     "aurelia-pal": "^1.8.0",
     "aurelia-store": "^1.1.0",
     "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.3.3",
     "usb-detection": "^4.0.0"
   },
   "devDependencies": {
